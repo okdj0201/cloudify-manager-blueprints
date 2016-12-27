@@ -1,0 +1,11 @@
+[Unit]
+Description=Cloudify Manager IP Setter
+After=network.target
+
+[Service]
+TimeoutStartSec=0
+EnvironmentFile=-/etc/sysconfig/cloudify-manager-ip-setter
+ExecStart=/usr/local/bin/manager-ip-setter.sh
+
+[Install]
+WantedBy=default.target

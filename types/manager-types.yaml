@@ -951,6 +951,19 @@ node_types:
             hide_output: *hide_output
             fabric_env: *simple_fabric_env
 
+  manager.nodes.ManagerIPSetter:
+    derived_from: cloudify.nodes.ApplicationModule
+    properties: {}
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        create:
+          implementation: fabric.fabric_plugin.tasks.run_script
+          inputs:
+            script_path:
+              default: components/manager-ip-setter/scripts/create.py
+            hide_output: *hide_output
+            fabric_env: *simple_fabric_env
+
   manager.nodes.WebUI:
     derived_from: cloudify.nodes.ApplicationModule
     properties:
